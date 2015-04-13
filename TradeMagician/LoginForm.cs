@@ -24,6 +24,11 @@ namespace TradeMagician
             broker.Items.AddRange(brokerList.ToArray<Broker>());
             broker.SelectedIndex = 0;
             server.DisplayMember = "Name";
+
+            //for test
+            userName.Text = "155092";
+            password.Text = "666666";
+            broker.SelectedIndex = 1;
         }
 
         private void broker_SelectedIndexChanged(object sender, EventArgs e)
@@ -38,12 +43,15 @@ namespace TradeMagician
 
         private void login_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("计时器频率: " + Stopwatch.Frequency);
-            TestCode.TestQuoteApi();
-            //TestTradeApi();
-            Console.Read();
-            //quoteApi.Disconnect();
-            //tradeApi.Disconnect();
+            LoginContext.UserName = userName.Text;
+            LoginContext.Password = password.Text;
+            LoginContext.BrokerInfo = broker.SelectedItem as Broker;
+            LoginContext.ServerInfo = server.SelectedItem as Server;
+
+            ApiContext.InitApiContext();
+            ContractSelectionForm contractSelection = new ContractSelectionForm();
+            contractSelection.ShowDialog();
+            this.Close();
         }
 
         private void exit_Click(object sender, EventArgs e)

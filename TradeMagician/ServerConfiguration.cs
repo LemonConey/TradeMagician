@@ -13,18 +13,17 @@ namespace TradeMagician
         public String BrokerName { get; set; }
         public String BrokerEName { get; set; }
         //public String BrokerType { get; set; }
+        public Int32 TopicId { get; set; }
     }
 
     class Server
     {
         public Server()
         {
-            Trading = new List<String>();
-            MarketData = new List<String>();
         }
         public String Name { get; set; }
-        public IList<String> Trading { get; set; }
-        public IList<String> MarketData { get; set; }
+        public String Trading { get; set; }
+        public String MarketData { get; set; }
 
     }
 
@@ -48,6 +47,7 @@ namespace TradeMagician
                 broker.BrokerID = element.GetAttribute("BrokerID");
                 broker.BrokerName = element.GetAttribute("BrokerName");
                 broker.BrokerEName = element.GetAttribute("BrokerEName");
+                broker.TopicId = Convert.ToInt32(element.GetAttribute("TopicID"));
                 brokerList.Add(broker);
             }
             return brokerList;
@@ -65,17 +65,12 @@ namespace TradeMagician
                 XmlElement serverEl = serverNode as XmlElement;
                 Server server = new Server();
                 server.Name = serverEl.SelectSingleNode(@"Name").InnerText;
-                XmlNodeList tradingItemsNodes = serverEl.SelectNodes(@"Trading/item");
-                foreach (XmlNode tradingItemNode in tradingItemsNodes)
-                {
-                    server.Trading.Add(tradingItemNode.InnerText);
-                }
+                XmlNode tradingItemNode=serverEl.SelectSingleNode(@"Trading/item");
+                server.Trading=tradingItemNode.InnerText;
 
-                XmlNodeList marketDataNodes = serverEl.SelectNodes(@"MarketData/item");
-                foreach (XmlNode marketDataNode in marketDataNodes)
-                {
-                    server.MarketData.Add(marketDataNode.InnerText);
-                }
+                XmlNode marketDataNode = serverEl.SelectSingleNode(@"MarketData/item");
+                server.MarketData=marketDataNode.InnerText;
+                
                 servers.Add(server);
                 
             }

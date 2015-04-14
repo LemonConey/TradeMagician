@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TradeMagician
 {
-    class Contract
+    public class Contract
     {
         public String ContractName { get; set; }
         public String ContractID { get; set; }
@@ -30,6 +30,17 @@ namespace TradeMagician
                 contracts.Add(contract);
             }
             return contracts;
+        }
+
+        public static String GetSubscribeString(IList<Contract> contracts)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (Contract contract in contracts)
+            {
+                sb.Append(contract.ContractName);
+                sb.Append(";");
+            }
+            return sb.ToString();
         }
     }
 }

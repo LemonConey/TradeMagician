@@ -15,6 +15,11 @@ namespace TradeMagician.Api
         public static void OnConnectionStatus(object sender, ConnectionStatus status, ref RspUserLoginField userLogin, int size1)
         {
             XApi api = sender as XApi;
+
+            if (status == ConnectionStatus.Initialized)
+            {
+                ApiContext.TradeLoginSuccess.Set();
+            }
             
         }
 

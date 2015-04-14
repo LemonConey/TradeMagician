@@ -13,12 +13,14 @@ namespace TradeMagician
 {
     public partial class LoginForm : Form
     {
+        public bool Success { get; set; }
         public LoginForm()
         {
             InitializeComponent();
         }
         private void LoginForm_Load(object sender, EventArgs e)
         {
+            this.Success = false;
             IList<Broker> brokerList = ServerConfiguration.GetBrokers();
             broker.DisplayMember = "BrokerName";
             broker.Items.AddRange(brokerList.ToArray<Broker>());
@@ -49,8 +51,13 @@ namespace TradeMagician
             LoginContext.ServerInfo = server.SelectedItem as Server;
 
             ApiContext.InitApiContext();
-            ContractSelectionForm contractSelection = new ContractSelectionForm();
-            contractSelection.ShowDialog();
+
+            while (ApiContext.QuoteLoginSuccess.WaitOne() && ApiContext.TradeLoginSuccess.WaitOne())
+            {
+                this.Success = true;
+                break;
+            }
+
             this.Close();
         }
 

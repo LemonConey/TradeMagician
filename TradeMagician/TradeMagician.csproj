@@ -85,8 +85,20 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainWorkbench.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWorkbench.Designer.cs">
+      <DependentUpon>MainWorkbench.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuotationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuotationForm.Designer.cs">
+      <DependentUpon>QuotationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServerConfiguration.cs" />
     <Compile Include="TestCode.cs" />
     <EmbeddedResource Include="ContractSelectionForm.resx">
@@ -98,6 +110,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainWorkbench.resx">
+      <DependentUpon>MainWorkbench.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -107,6 +122,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="QuotationForm.resx">
+      <DependentUpon>QuotationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

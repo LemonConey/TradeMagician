@@ -12,6 +12,7 @@ namespace TradeMagician
 {
     public partial class ContractSelectionForm : Form
     {
+        public IList<Contract> SelectedContracts = new List<Contract>();
         public ContractSelectionForm()
         {
             InitializeComponent();
@@ -19,7 +20,13 @@ namespace TradeMagician
 
         private void confirm_Click(object sender, EventArgs e)
         {
-            
+            foreach (DataGridViewRow row in contractGrid.Rows)
+            {
+                if(row.Selected){
+                    SelectedContracts.Add(new Contract(row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString()));
+                }
+            }
+            this.Close();
         }
 
         private void ContractSelectionForm_Load(object sender, EventArgs e)
@@ -30,7 +37,6 @@ namespace TradeMagician
 
                 DataGridViewRow row = (DataGridViewRow)this.contractGrid.RowTemplate.Clone();
                 DataGridViewCheckBoxCell selected = new DataGridViewCheckBoxCell();
-                selected.Selected=false;
                 row.Cells.Add(selected);
 
                 DataGridViewTextBoxCell contractId = new DataGridViewTextBoxCell();
@@ -40,8 +46,9 @@ namespace TradeMagician
                 DataGridViewTextBoxCell contractName = new DataGridViewTextBoxCell();
                 contractName.Value = contract.ContractName;
                 row.Cells.Add(contractName);
-                
+
                 contractGrid.Rows.Add(row);
+                
             }
         }
     }

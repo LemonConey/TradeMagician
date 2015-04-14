@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TradeMagician.Api;
 
@@ -16,6 +17,8 @@ namespace TradeMagician
         public static XApi QuoteApi { get; set; }
         public static XApi TradeApi { get; set; }
 
+        public static ManualResetEvent QuoteLoginSuccess = new ManualResetEvent(false);
+        public static ManualResetEvent TradeLoginSuccess = new ManualResetEvent(false);
         public static void InitApiContext(){
 
             CreateQuotationApi();

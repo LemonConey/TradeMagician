@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.contractGrid = new System.Windows.Forms.DataGridView();
-            this.confirm = new System.Windows.Forms.Button();
-            this.cancel = new System.Windows.Forms.Button();
             this.Selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ContractID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ContractName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.confirm = new System.Windows.Forms.Button();
+            this.cancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.contractGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,27 +49,9 @@
             this.contractGrid.Location = new System.Drawing.Point(13, 13);
             this.contractGrid.Name = "contractGrid";
             this.contractGrid.RowTemplate.Height = 27;
+            this.contractGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.contractGrid.Size = new System.Drawing.Size(331, 354);
             this.contractGrid.TabIndex = 0;
-            // 
-            // confirm
-            // 
-            this.confirm.Location = new System.Drawing.Point(188, 373);
-            this.confirm.Name = "confirm";
-            this.confirm.Size = new System.Drawing.Size(75, 23);
-            this.confirm.TabIndex = 1;
-            this.confirm.Text = "确定";
-            this.confirm.UseVisualStyleBackColor = true;
-            this.confirm.Click += new System.EventHandler(this.confirm_Click);
-            // 
-            // cancel
-            // 
-            this.cancel.Location = new System.Drawing.Point(269, 373);
-            this.cancel.Name = "cancel";
-            this.cancel.Size = new System.Drawing.Size(75, 23);
-            this.cancel.TabIndex = 2;
-            this.cancel.Text = "取消";
-            this.cancel.UseVisualStyleBackColor = true;
             // 
             // Selected
             // 
@@ -90,6 +72,25 @@
             this.ContractName.Name = "ContractName";
             this.ContractName.ReadOnly = true;
             // 
+            // confirm
+            // 
+            this.confirm.Location = new System.Drawing.Point(188, 373);
+            this.confirm.Name = "confirm";
+            this.confirm.Size = new System.Drawing.Size(75, 23);
+            this.confirm.TabIndex = 1;
+            this.confirm.Text = "确定";
+            this.confirm.UseVisualStyleBackColor = true;
+            this.confirm.Click += new System.EventHandler(this.confirm_Click);
+            // 
+            // cancel
+            // 
+            this.cancel.Location = new System.Drawing.Point(269, 373);
+            this.cancel.Name = "cancel";
+            this.cancel.Size = new System.Drawing.Size(75, 23);
+            this.cancel.TabIndex = 2;
+            this.cancel.Text = "取消";
+            this.cancel.UseVisualStyleBackColor = true;
+            // 
             // ContractSelectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -101,6 +102,7 @@
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ContractSelectionForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ContractSelectionForm";
             this.Load += new System.EventHandler(this.ContractSelectionForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.contractGrid)).EndInit();

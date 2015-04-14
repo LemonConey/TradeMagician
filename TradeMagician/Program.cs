@@ -16,7 +16,14 @@ namespace TradeMagician
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            LoginForm login = new LoginForm();
+            login.ShowDialog();
+            if (login.Success)
+            {
+                Application.Run(new MainWorkbench());
+            }
+            
+           
         }
     }
 }

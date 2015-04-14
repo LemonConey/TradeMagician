@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace TradeMagician
 {
-    public partial class MainForm : Form
+    public partial class QuotationForm : Form
     {
-        public MainForm()
+        IList<Contract> SubscribedContracts { get; set; }
+        public QuotationForm()
         {
             InitializeComponent();
         }
-
-        private void MainForm_Load(object sender, EventArgs e)
+        public QuotationForm(IList<Contract> contracts):this()
         {
-            
+            SubscribedContracts = contracts;
         }
     }
 }

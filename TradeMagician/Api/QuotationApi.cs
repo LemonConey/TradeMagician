@@ -18,7 +18,7 @@ namespace TradeMagician.Api
 
             if (status == ConnectionStatus.Initialized)
             {
-                
+                ApiContext.QuoteLoginSuccess.Set();
             }
         }
 

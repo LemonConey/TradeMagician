@@ -13,12 +13,14 @@ namespace TradeMagician
     public partial class MainWorkbench : Form
     {
         private int childFormNumber = 0;
-
-        private IList<Contract> selectedContracts = null;
-        private QuotationForm quotationForm = null;
         public MainWorkbench()
         {
             InitializeComponent();
+        }
+
+        private void MainWorkbench_Load(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Maximized;
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -111,15 +113,19 @@ namespace TradeMagician
             ContractSelectionForm selectForm = new ContractSelectionForm();
             selectForm.ShowDialog();
             //selectForm.Show();
-            this.selectedContracts = selectForm.SelectedContracts;
+            ApiContext.SubscribedContracts = selectForm.SelectedContracts;
             ShowQuoteView();
         }
 
         private void ShowQuoteView()
         {
+            QuotationForm quotationForm = MdiChildren.ToList<Form>().Find(f =>
+            {
+                return f is QuotationForm;
+            }) as QuotationForm;
             if (quotationForm == null)
             {
-                quotationForm = new QuotationForm(this.selectedContracts);
+                quotationForm = new QuotationForm(ApiContext.SubscribedContracts);
                 quotationForm.MdiParent = this;
                 quotationForm.Show();
                 quotationForm.WindowState = FormWindowState.Maximized;
@@ -131,5 +137,7 @@ namespace TradeMagician
             }
 
         }
+
+        
     }
 }

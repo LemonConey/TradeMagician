@@ -20,12 +20,17 @@ namespace TradeMagician
 
         private void confirm_Click(object sender, EventArgs e)
         {
+            ApiContext.SubscribedContracts.Clear();
+
             foreach (DataGridViewRow row in contractGrid.Rows)
             {
-                if(row.Selected){
-                    SelectedContracts.Add(new Contract(row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString()));
+                Boolean isSelected = Convert.ToBoolean(row.Cells["Selected"].Value);
+                if (isSelected)
+                {
+                    SelectedContracts.Add(new Contract(row.Cells["ContractID"].Value.ToString(), row.Cells["ContractName"].Value.ToString()));
                 }
             }
+            ApiContext.SubscribedContracts = SelectedContracts;
             this.Close();
         }
 
@@ -34,22 +39,27 @@ namespace TradeMagician
             IList<Contract> contracts = Contract.GetCurrentContract();
             foreach (Contract contract in contracts)
             {
-
-                DataGridViewRow row = (DataGridViewRow)this.contractGrid.RowTemplate.Clone();
-                DataGridViewCheckBoxCell selected = new DataGridViewCheckBoxCell();
-                row.Cells.Add(selected);
-
-                DataGridViewTextBoxCell contractId = new DataGridViewTextBoxCell();
-                contractId.Value=contract.ContractID;
-                row.Cells.Add(contractId);
-
-                DataGridViewTextBoxCell contractName = new DataGridViewTextBoxCell();
-                contractName.Value = contract.ContractName;
-                row.Cells.Add(contractName);
-
-                contractGrid.Rows.Add(row);
-                
+                int index = this.contractGrid.Rows.Add();
+                DataGridViewRow row = this.contractGrid.Rows[index];
+                bool isSubscribed = ApiContext.SubscribedContracts.Any<Contract>(c =>
+                {
+                    return c.ContractName.Equals(contract.ContractName);
+                });
+                row.Cells["Selected"].Value = isSubscribed;
+                row.Selected = isSubscribed;
+                row.Cells["ContractID"].Value = contract.ContractID;
+                row.Cells["ContractName"].Value = contract.ContractName;
             }
         }
+
+        private void contractGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView grid = sender as DataGridView;
+            DataGridViewRow currentRow = grid.Rows[e.RowIndex];
+            Boolean isSelect=!Convert.ToBoolean(currentRow.Cells["Selected"].Value);
+            currentRow.Cells["Selected"].Value = isSelect;
+            currentRow.Selected = isSelect;
+        }
+
     }
 }

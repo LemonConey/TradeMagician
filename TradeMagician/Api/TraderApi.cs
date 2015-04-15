@@ -12,11 +12,14 @@ namespace TradeMagician.Api
 {
     class TraderApi
     {
+
+
+        //Initialized->Connecting->Connected->Logining->Logined->Doing->Done
         public static void OnConnectionStatus(object sender, ConnectionStatus status, ref RspUserLoginField userLogin, int size1)
         {
             XApi api = sender as XApi;
 
-            if (status == ConnectionStatus.Initialized)
+            if (status == ConnectionStatus.Done)
             {
                 ApiContext.TradeLoginSuccess.Set();
             }

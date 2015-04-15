@@ -79,11 +79,11 @@
             this.printPreviewToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.contractSelectToolbar = new System.Windows.Forms.ToolStripButton();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.contractSelectToolbar = new System.Windows.Forms.ToolStripButton();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -301,7 +301,7 @@
             this.toolBarToolStripMenuItem.CheckOnClick = true;
             this.toolBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolBarToolStripMenuItem.Name = "toolBarToolStripMenuItem";
-            this.toolBarToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.toolBarToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
             this.toolBarToolStripMenuItem.Text = "&Toolbar";
             this.toolBarToolStripMenuItem.Click += new System.EventHandler(this.ToolBarToolStripMenuItem_Click);
             // 
@@ -311,7 +311,7 @@
             this.statusBarToolStripMenuItem.CheckOnClick = true;
             this.statusBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.statusBarToolStripMenuItem.Name = "statusBarToolStripMenuItem";
-            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
             this.statusBarToolStripMenuItem.Text = "&Status Bar";
             this.statusBarToolStripMenuItem.Click += new System.EventHandler(this.StatusBarToolStripMenuItem_Click);
             // 
@@ -326,7 +326,7 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(136, 24);
             this.optionsToolStripMenuItem.Text = "&Options";
             // 
             // windowsMenu
@@ -515,6 +515,21 @@
             this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.helpToolStripButton.Text = "Help";
             // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
+            // 
+            // contractSelectToolbar
+            // 
+            this.contractSelectToolbar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.contractSelectToolbar.Image = ((System.Drawing.Image)(resources.GetObject("contractSelectToolbar.Image")));
+            this.contractSelectToolbar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.contractSelectToolbar.Name = "contractSelectToolbar";
+            this.contractSelectToolbar.Size = new System.Drawing.Size(23, 22);
+            this.contractSelectToolbar.Text = "合约选择";
+            this.contractSelectToolbar.Click += new System.EventHandler(this.contractSelectToolbar_Click);
+            // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -532,21 +547,6 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(54, 19);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // toolStripSeparator9
-            // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
-            // 
-            // contractSelectToolbar
-            // 
-            this.contractSelectToolbar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.contractSelectToolbar.Image = ((System.Drawing.Image)(resources.GetObject("contractSelectToolbar.Image")));
-            this.contractSelectToolbar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.contractSelectToolbar.Name = "contractSelectToolbar";
-            this.contractSelectToolbar.Size = new System.Drawing.Size(23, 22);
-            this.contractSelectToolbar.Text = "合约选择";
-            this.contractSelectToolbar.Click += new System.EventHandler(this.contractSelectToolbar_Click);
-            // 
             // MainWorkbench
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -561,6 +561,7 @@
             this.Name = "MainWorkbench";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainWorkbench";
+            this.Load += new System.EventHandler(this.MainWorkbench_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.toolStrip.ResumeLayout(false);

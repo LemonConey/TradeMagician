@@ -1,4 +1,5 @@
 ﻿using QuantBox;
+using QuantBox.XAPI;
 using QuantBox.XAPI.Callback;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,17 @@ namespace TradeMagician
 {
     class ApiContext
     {
+        static ApiContext()
+        {
+            SubscribedContracts = new List<Contract>();
+        }
         private static String QuoteApiPath = @"QuantBox_Femas_Quote.dll";
         private static String TradeApiPath = @"QuantBox_Femas_Trade.dll";
         public static XApi QuoteApi { get; set; }
         public static XApi TradeApi { get; set; }
 
+        public static Queue<DepthMarketDataField> DepthMarketDataQueue = new Queue<DepthMarketDataField>();
+        public static IList<Contract> SubscribedContracts { get; set; }
         public static ManualResetEvent QuoteLoginSuccess = new ManualResetEvent(false);
         public static ManualResetEvent TradeLoginSuccess = new ManualResetEvent(false);
         public static void InitApiContext(){

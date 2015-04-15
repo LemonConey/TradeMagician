@@ -15,15 +15,15 @@
     </Servers>
   </broker>
 
-  <broker BrokerID="0152" TopicID="100" BrokerName="·ÉÂí»¥ÁªÍø²âÊÔ" BrokerEName="femasNewworkTest" Hide="0" TitleBarText="" BrokerType="2">
+  <broker BrokerID="0001" TopicID="100" BrokerName="·ÉÂí»¥ÁªÍø²âÊÔ" BrokerEName="femasNewworkTest" Hide="0" TitleBarText="" BrokerType="2">
     <Servers>
       <Server>
         <Name>·ÉÂí»¥ÁªÍø²âÊÔ</Name>
         <Trading>
-          <item>124.74.248.150:7036</item>
+          <item>117.184.207.108:6666</item>
         </Trading>
         <MarketData>
-          <item>124.74.248.150:7230</item>
+          <item>117.184.207.108:6888</item>
         </MarketData>
       </Server>
     </Servers>

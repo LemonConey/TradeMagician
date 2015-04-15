@@ -52,10 +52,11 @@
             this.contractGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.contractGrid.Size = new System.Drawing.Size(331, 354);
             this.contractGrid.TabIndex = 0;
+            this.contractGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.contractGrid_CellClick);
             // 
             // Selected
             // 
-            this.Selected.HeaderText = "";
+            this.Selected.HeaderText = "选择";
             this.Selected.Name = "Selected";
             this.Selected.ReadOnly = true;
             this.Selected.Width = 50;

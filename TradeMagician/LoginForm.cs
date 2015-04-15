@@ -27,7 +27,7 @@ namespace TradeMagician
             broker.SelectedIndex = 0;
             server.DisplayMember = "Name";
 
-            //for test
+            //TODO:for test
             userName.Text = "155092";
             password.Text = "666666";
             broker.SelectedIndex = 1;

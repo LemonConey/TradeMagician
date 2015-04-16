@@ -15,7 +15,7 @@ namespace TradeMagician.Api
 
 
         //Initialized->Connecting->Connected->Logining->Logined->Doing->Done
-        public static void OnConnectionStatus(object sender, ConnectionStatus status, ref RspUserLoginField userLogin, int size1)
+        public static void OnConnectionStatus(object sender, ConnectionStatus status, ref RspUserLoginField userLogin, int size)
         {
             XApi api = sender as XApi;
 
@@ -29,6 +29,10 @@ namespace TradeMagician.Api
         public static void OnRtnError(object sender, [In] ref ErrorField error)
         {
 
+        }
+        public static void OnRspQryInvestorPosition(object sender, ref PositionField position, int size1, bool bIsLast)
+        {
+            ApiContext.InvestorPosition.Enqueue(position);
         }
     }
 }

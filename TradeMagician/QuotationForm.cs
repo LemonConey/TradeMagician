@@ -42,7 +42,10 @@ namespace TradeMagician
         }
         private void InitRows()
         {
-            foreach(Contract contract in ApiContext.SubscribedContracts)
+            RowIndexMap.Clear();
+            quotationGrid.Rows.Clear();
+
+            foreach(Contract contract in SubscribedContracts)
             {
                 int index = quotationGrid.Rows.Add();
                 DataGridViewRow row = quotationGrid.Rows[index];
@@ -77,8 +80,11 @@ namespace TradeMagician
             {
                 if (ApiContext.DepthMarketDataQueue.Count >= 1) 
                 {
-                    marketData = ApiContext.DepthMarketDataQueue.Dequeue();
-                    Invoke(new UpdateMarketDataDelegate(UpdateMarketData), marketData);
+                    Boolean getted = ApiContext.DepthMarketDataQueue.TryDequeue(out marketData);
+                    if (getted)
+                    {
+                        Invoke(new UpdateMarketDataDelegate(UpdateMarketData), marketData);
+                    }
                 }
                 
             }
@@ -88,6 +94,23 @@ namespace TradeMagician
         {
             cts.Cancel();
             ApiContext.QuoteApi.Unsubscribe(Contract.GetSubscribeString(SubscribedContracts), "");
+        }
+        
+        public void ReSubscribe()
+        {
+            UnSubscribe();
+            Subscribe();
+        }
+        public void Subscribe()
+        {
+            SubscribedContracts = ApiContext.SubscribedContracts;
+            InitRows();
+            ApiContext.QuoteApi.Subscribe(Contract.GetSubscribeString(SubscribedContracts), "");
+        }
+        private void UnSubscribe()
+        {
+            ApiContext.QuoteApi.Unsubscribe(Contract.GetSubscribeString(SubscribedContracts), "");
+            quotationGrid.Rows.Clear();
         }
     }
 }

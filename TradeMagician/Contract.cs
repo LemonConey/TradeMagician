@@ -33,6 +33,8 @@ namespace TradeMagician
             contracts.Add(new Contract("IF1210", "IF1210"));
             contracts.Add(new Contract("IF1211", "IF1211"));
             contracts.Add(new Contract("IF1212", "IF1212"));
+            contracts.Add(new Contract("IF1310", "IF1310"));
+            contracts.Add(new Contract("IF1311", "IF1311"));
             
             return contracts;
         }

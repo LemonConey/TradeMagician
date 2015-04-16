@@ -13,7 +13,7 @@ namespace TradeMagician.Api
     class QuotationApi
     {
         //Initialized->Connecting->Connected->Logining->Logined->Done
-        public static void OnConnectionStatus(object sender, ConnectionStatus status, ref RspUserLoginField userLogin, int size1)
+        public static void OnConnectionStatus(object sender, ConnectionStatus status, ref RspUserLoginField userLogin, int size)
         {
             XApi api = sender as XApi;
 
@@ -33,5 +33,6 @@ namespace TradeMagician.Api
 
 
         }
+        
     }
 }

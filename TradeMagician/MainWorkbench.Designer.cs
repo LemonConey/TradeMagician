@@ -81,6 +81,7 @@
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.contractSelectToolbar = new System.Windows.Forms.ToolStripButton();
+            this.queryInvestorPositionToolbar = new System.Windows.Forms.ToolStripButton();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -442,7 +443,8 @@
             this.toolStripSeparator2,
             this.helpToolStripButton,
             this.toolStripSeparator9,
-            this.contractSelectToolbar});
+            this.contractSelectToolbar,
+            this.queryInvestorPositionToolbar});
             this.toolStrip.Location = new System.Drawing.Point(0, 27);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(843, 25);
@@ -529,6 +531,16 @@
             this.contractSelectToolbar.Size = new System.Drawing.Size(23, 22);
             this.contractSelectToolbar.Text = "合约选择";
             this.contractSelectToolbar.Click += new System.EventHandler(this.contractSelectToolbar_Click);
+            // 
+            // queryInvestorPositionToolbar
+            // 
+            this.queryInvestorPositionToolbar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.queryInvestorPositionToolbar.Image = ((System.Drawing.Image)(resources.GetObject("queryInvestorPositionToolbar.Image")));
+            this.queryInvestorPositionToolbar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.queryInvestorPositionToolbar.Name = "queryInvestorPositionToolbar";
+            this.queryInvestorPositionToolbar.Size = new System.Drawing.Size(23, 22);
+            this.queryInvestorPositionToolbar.Text = "查询持仓";
+            this.queryInvestorPositionToolbar.Click += new System.EventHandler(this.queryInvestorPositionToolbar_Click);
             // 
             // statusStrip
             // 
@@ -629,6 +641,7 @@
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripButton contractSelectToolbar;
+        private System.Windows.Forms.ToolStripButton queryInvestorPositionToolbar;
     }
 }
 

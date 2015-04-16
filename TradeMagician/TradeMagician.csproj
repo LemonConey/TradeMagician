@@ -72,6 +72,12 @@
     <Compile Include="ContractSelectionForm.Designer.cs">
       <DependentUpon>ContractSelectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InvestorPositionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InvestorPositionForm.Designer.cs">
+      <DependentUpon>InvestorPositionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginContext.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -103,6 +109,9 @@
     <Compile Include="TestCode.cs" />
     <EmbeddedResource Include="ContractSelectionForm.resx">
       <DependentUpon>ContractSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvestorPositionForm.resx">
+      <DependentUpon>InvestorPositionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

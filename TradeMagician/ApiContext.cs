@@ -2,6 +2,7 @@
 using QuantBox.XAPI;
 using QuantBox.XAPI.Callback;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,12 +23,13 @@ namespace TradeMagician
         public static XApi QuoteApi { get; set; }
         public static XApi TradeApi { get; set; }
 
-        public static Queue<DepthMarketDataField> DepthMarketDataQueue = new Queue<DepthMarketDataField>();
+        public static ConcurrentQueue<DepthMarketDataField> DepthMarketDataQueue = new ConcurrentQueue<DepthMarketDataField>();
+        public static ConcurrentQueue<PositionField> InvestorPosition = new ConcurrentQueue<PositionField>();
         public static IList<Contract> SubscribedContracts { get; set; }
         public static ManualResetEvent QuoteLoginSuccess = new ManualResetEvent(false);
         public static ManualResetEvent TradeLoginSuccess = new ManualResetEvent(false);
         public static void InitApiContext(){
-
+            
             CreateQuotationApi();
             CreateTraderApi();
         }
@@ -61,6 +63,7 @@ namespace TradeMagician
 
             //TradeApi.SubscribedInstruments["S"] = new SortedSet<string>() { "IF1212;IF1211;IF1210" };
             TradeApi.OnConnectionStatus = TraderApi.OnConnectionStatus;
+            TradeApi.OnRspQryInvestorPosition = TraderApi.OnRspQryInvestorPosition;
             TradeApi.OnRtnError = TraderApi.OnRtnError;
             TradeApi.Connect();
         }

@@ -108,6 +108,11 @@ namespace TradeMagician
             }
         }
 
+        /// <summary>
+        /// 选择合约
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void contractSelectToolbar_Click(object sender, EventArgs e)
         {
             ContractSelectionForm selectForm = new ContractSelectionForm();
@@ -134,10 +139,35 @@ namespace TradeMagician
             {
                 //quotationForm.ReSubscribe
                 quotationForm.Activate();
+                quotationForm.ReSubscribe();
             }
 
         }
 
+        /// <summary>
+        /// 查询持仓
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void queryInvestorPositionToolbar_Click(object sender, EventArgs e)
+        {
+            InvestorPositionForm investorPosition = MdiChildren.ToList<Form>().Find(f =>
+            {
+                return f is InvestorPositionForm;
+            }) as InvestorPositionForm;
+            if (investorPosition == null)
+            {
+                investorPosition = new InvestorPositionForm();
+                investorPosition.MdiParent = this;
+                investorPosition.Show();
+                investorPosition.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                //quotationForm.ReSubscribe
+                investorPosition.Activate();
+            }
+        }
         
     }
 }

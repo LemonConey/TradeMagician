@@ -53,12 +53,14 @@
             this.LowestPrice,
             this.SettlementPrice,
             this.PreSettlementPrice});
-            this.quotationGrid.Location = new System.Drawing.Point(13, 13);
+            this.quotationGrid.Location = new System.Drawing.Point(10, 11);
+            this.quotationGrid.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.quotationGrid.Name = "quotationGrid";
             this.quotationGrid.ReadOnly = true;
             this.quotationGrid.RowTemplate.Height = 27;
-            this.quotationGrid.Size = new System.Drawing.Size(871, 511);
+            this.quotationGrid.Size = new System.Drawing.Size(653, 443);
             this.quotationGrid.TabIndex = 0;
+            this.quotationGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.quotationGrid_CellContentDoubleClick);
             // 
             // InstrumentID
             // 
@@ -98,10 +100,11 @@
             // 
             // QuotationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 536);
+            this.ClientSize = new System.Drawing.Size(672, 465);
             this.Controls.Add(this.quotationGrid);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "QuotationForm";
             this.Text = "QuotationForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuotationForm_FormClosing);

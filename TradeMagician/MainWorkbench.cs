@@ -133,7 +133,7 @@ namespace TradeMagician
                 quotationForm = new QuotationForm(ApiContext.SubscribedContracts);
                 quotationForm.MdiParent = this;
                 quotationForm.Show();
-                quotationForm.WindowState = FormWindowState.Maximized;
+                //quotationForm.WindowState = FormWindowState.Maximized;
             }
             else
             {

@@ -56,6 +56,7 @@ namespace TradeMagician
 
         delegate void UpdateMarketDataDelegate(DepthMarketDataField data);
         IDictionary<String, int> RowIndexMap = new Dictionary<String, int>();
+        IDictionary<String, DetailForm> DetailForms = new Dictionary<String, DetailForm>();
         private void UpdateMarketData(DepthMarketDataField marketData)
         {
             if (!RowIndexMap.ContainsKey(marketData.InstrumentID))
@@ -111,6 +112,21 @@ namespace TradeMagician
         {
             ApiContext.QuoteApi.Unsubscribe(Contract.GetSubscribeString(SubscribedContracts), "");
             quotationGrid.Rows.Clear();
+
+        }
+
+        private void quotationGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var currentRow = quotationGrid.Rows[e.RowIndex];
+            string instId = (currentRow.Cells["InstrumentId"].Value as string);
+            if (!DetailForms.ContainsKey(instId) || DetailForms[instId].IsDisposed)
+            {
+                DetailForms[instId] = DetailForm.create(instId);
+                DetailForms[instId].MdiParent = this.MdiParent;
+            }
+            var detailForm = DetailForms[instId];
+            detailForm.Show();
+            detailForm.Activate();
         }
     }
 }
